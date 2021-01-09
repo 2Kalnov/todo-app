@@ -18,6 +18,6 @@ export class Task {
     @Column()
     description: string;
 
-    @Column({ default: TaskStatus.ACTIVE })
+    @Column('int')
     status: TaskStatus;
 }
