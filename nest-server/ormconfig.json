@@ -5,7 +5,7 @@
   "username": "admin",
   "password": "tOOd00$",
   "database": "todo_app",
-  "entities": ["dist/**/*.entity{.ts,.js}"],
+  "entities": ["dist/**/*.entity.ts"],
   "migrations": ["migrations/*.ts"],
   "cli": {
     "migrationsDir": "migrations"
