@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
-enum TaskStatus {
+export enum TaskStatus {
     ACTIVE, DONE, IN_PROGRESS
 }
 
