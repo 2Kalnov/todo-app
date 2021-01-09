@@ -28,4 +28,12 @@ export class TasksService {
     async delete(id: number) {
         await this.tasksRepository.delete(id);
     }
+
+    create(taskDto: CreateTaskDto) : Promise<Task> {
+        const task = this.tasksRepository.create();
+        task.title = taskDto.title;
+        task.description = taskDto.description;
+
+        return this.tasksRepository.save(task);
+    }
 }
