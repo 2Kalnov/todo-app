@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import {TypeOrmModule} from "@nestjs/typeorm";
+import {Task} from "./tasks/task.entity";
 
 @Module({
   imports: [
@@ -12,7 +13,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
       username: 'admin',
       password: 'tOOd00$',
       database: 'todo_app',
-      entities: [],
+      entities: [Task],
     })
   ],
   controllers: [AppController],
