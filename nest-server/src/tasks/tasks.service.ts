@@ -13,7 +13,7 @@ export class TasksService {
          return this.tasksRepository.findOne(id);
     }
 
-    findAll(offset: number, limit: number) : Promise<Task[]> {
+    findAll(offset?: number, limit?: number) : Promise<Task[]> {
         return this.tasksRepository.find({ skip: offset, take: limit });
     }
 
