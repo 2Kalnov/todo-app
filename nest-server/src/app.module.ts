@@ -14,6 +14,10 @@ import {Task} from "./tasks/task.entity";
       password: 'tOOd00$',
       database: 'todo_app',
       entities: [Task],
+      migrations: ["migrations/*.ts"],
+      cli: {
+        "migrationsDir": "migrations"
+      }
     })
   ],
   controllers: [AppController],
