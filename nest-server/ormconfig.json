@@ -5,9 +5,9 @@
   "username": "admin",
   "password": "tOOd00$",
   "database": "todo_app",
-  "entities": ["dist/**/*.entity.ts"],
-  "migrations": ["migrations/*.ts"],
+  "entities": ["dist/**/*.entity.js"],
+  "migrations": ["dist/migrations/*.js"],
   "cli": {
-    "migrationsDir": "migrations"
+    "migrationsDir": "src/migrations"
   }
 }
