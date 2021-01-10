@@ -5,13 +5,13 @@ export class AddTimestampsToTasks1610305832419 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.addColumn('tasks', new TableColumn({
             name: 'createdAt',
-            type: 'date',
+            type: 'timestamp without time zone',
             default: 'CURRENT_TIMESTAMP'
         }));
 
         await queryRunner.addColumn('tasks', new TableColumn({
             name: 'updatedAt',
-            type: 'date',
+            type: 'timestamp without time zone',
             default: 'CURRENT_TIMESTAMP'
         }));
     }
