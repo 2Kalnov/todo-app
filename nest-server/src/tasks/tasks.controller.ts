@@ -33,4 +33,14 @@ export class TasksController {
     edit(@Param('id') id: number, @Body() taskDto: CreateTaskDto) {
         return this.tasksService.edit(id, taskDto);
     }
+
+    @Get('active')
+    getActive() : Promise<Task[]> {
+        return this.tasksService.findActive();
+    }
+
+    @Get('done')
+    getDone() : Promise<Task[]> {
+        return this.tasksService.findDone();
+    }
 }
