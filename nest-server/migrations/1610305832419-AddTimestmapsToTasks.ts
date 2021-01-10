@@ -17,5 +17,7 @@ export class AddTimestampsToTasks1610305832419 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropColumn('tasks', 'createdAt')
+        await queryRunner.dropColumn('tasks', 'updatedAt')
     }
 }
