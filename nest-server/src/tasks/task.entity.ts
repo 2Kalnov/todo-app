@@ -4,7 +4,7 @@ export enum TaskStatus {
     ACTIVE, DONE, IN_PROGRESS
 }
 
-@Entity()
+@Entity({ name: 'tasks' })
 export class Task {
     @PrimaryGeneratedColumn()
     id: number;
