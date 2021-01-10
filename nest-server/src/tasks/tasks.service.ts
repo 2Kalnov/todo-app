@@ -32,6 +32,7 @@ export class TasksService {
         const task = await this.tasksRepository.findOne(id);
         if(task) {
             task.status = TaskStatus.DONE;
+            task.doneDate = new Date();
             this.tasksRepository.save(task);
         }
         else
