@@ -22,7 +22,7 @@ export class Task {
     status: TaskStatus;
 
     @UpdateDateColumn()
-    updateAt: Date;
+    updatedAt: Date;
 
     @CreateDateColumn()
     createdAt: Date;
