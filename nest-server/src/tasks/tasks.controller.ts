@@ -24,7 +24,7 @@ export class TasksController {
         return createdTask.id;
     }
 
-    @Patch(':id')
+    @Patch(':id/done')
     setDone(@Param('id') id: number) {
         return this.tasksService.setDone(id);
     }
