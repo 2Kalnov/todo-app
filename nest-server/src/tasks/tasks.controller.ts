@@ -28,4 +28,9 @@ export class TasksController {
     setDone(@Param('id') id: number) {
         return this.tasksService.setDone(id);
     }
+
+    @Patch(':id')
+    edit(@Param('id') id: number, @Body() taskDto: CreateTaskDto) {
+        return this.tasksService.edit(id, taskDto);
+    }
 }
