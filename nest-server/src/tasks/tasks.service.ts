@@ -1,4 +1,4 @@
-import {Injectable, NotFoundException} from "@nestjs/common";
+import {BadRequestException, Injectable, NotFoundException} from "@nestjs/common";
 import {Task, TaskStatus} from "./task.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
@@ -31,6 +31,8 @@ export class TasksService {
     async setDone(id: number) {
         const task = await this.tasksRepository.findOne(id);
         if(task) {
+            if(task.status === TaskStatus.DONE)
+                throw new BadRequestException("Task is already done");
             task.status = TaskStatus.DONE;
             task.doneDate = new Date();
             this.tasksRepository.save(task);
