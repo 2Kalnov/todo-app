@@ -1,4 +1,4 @@
-import {Injectable} from "@nestjs/common";
+import {Injectable, NotFoundException} from "@nestjs/common";
 import {Task, TaskStatus} from "./task.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
@@ -17,12 +17,25 @@ export class TasksService {
         return this.tasksRepository.find({ skip: offset, take: limit});
     }
 
-    edit(id: number, editInfo: CreateTaskDto)  {
-        this.tasksRepository.update(id, editInfo);
+    async edit(id: number, editInfo: CreateTaskDto)  {
+        const task = await this.tasksRepository.findOne(id);
+        if(task) {
+            task.title = editInfo.title ?? task.title;
+            task.description = editInfo.description ?? task.description;
+            this.tasksRepository.save(task);
+        }
+        else
+            throw new NotFoundException(`Task with id ${id} doesn't exist`);
     }
 
     async setDone(id: number) {
-        await this.tasksRepository.update(id, { status: TaskStatus.DONE });
+        const task = await this.tasksRepository.findOne(id);
+        if(task) {
+            task.status = TaskStatus.DONE;
+            this.tasksRepository.save(task);
+        }
+        else
+            throw new NotFoundException(`Task with id ${id} doesn't exist`);
     }
 
     async delete(id: number) {
