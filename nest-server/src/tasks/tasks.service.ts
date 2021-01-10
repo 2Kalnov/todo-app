@@ -17,24 +17,13 @@ export class TasksService {
         return this.tasksRepository.find({ skip: offset, take: limit, order: { updatedAt: "DESC" }});
     }
 
-    findActive(offset: number = 0, limit: number = 20): Promise<Task[]> {
+    findByStatus(status: number, offset: number = 0, limit: number = 20): Promise<Task[]> {
         return this.tasksRepository.find({
            skip: offset,
            take: limit,
            order: { updatedAt: "DESC" },
            where: {
-               status: TaskStatus.ACTIVE
-           }
-        });
-    }
-
-    findDone(offset: number = 0, limit: number = 20): Promise<Task[]> {
-        return this.tasksRepository.find({
-           skip: offset,
-           take: limit,
-           order: { updatedAt: "DESC" },
-           where: {
-               status: TaskStatus.DONE
+               status
            }
         });
     }

@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Param, Patch, Post} from "@nestjs/common";
+import {Body, Controller, Get, Param, Patch, Post, Query} from "@nestjs/common";
 import {TasksService} from "./tasks.service";
 import {Task} from "./task.entity";
 import {CreateTaskDto} from "./dto/CreateTaskDto";
@@ -35,12 +35,7 @@ export class TasksController {
     }
 
     @Get('active')
-    getActive() : Promise<Task[]> {
-        return this.tasksService.findActive();
-    }
-
-    @Get('done')
-    getDone() : Promise<Task[]> {
-        return this.tasksService.findDone();
+    getByStatus(@Query('status') status: number) : Promise<Task[]> {
+        return this.tasksService.findByStatus(status);
     }
 }
