@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import {Entity, Column, PrimaryGeneratedColumn, UpdateDateColumn, CreateDateColumn} from "typeorm";
 
 export enum TaskStatus {
     ACTIVE, DONE, IN_PROGRESS
@@ -20,4 +20,10 @@ export class Task {
 
     @Column('int')
     status: TaskStatus;
+
+    @UpdateDateColumn()
+    updateAt: Date;
+
+    @CreateDateColumn()
+    createdAt: Date;
 }
