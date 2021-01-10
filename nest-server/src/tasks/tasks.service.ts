@@ -1,5 +1,5 @@
-import {Injectable, NotFoundException} from "@nestjs/common";
-import { Task, TaskStatus } from "./task.entity";
+import {Injectable} from "@nestjs/common";
+import {Task, TaskStatus} from "./task.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import {Repository} from "typeorm";
 import {CreateTaskDto} from "./dto/CreateTaskDto";
@@ -33,6 +33,7 @@ export class TasksService {
         const task = this.tasksRepository.create();
         task.title = taskDto.title;
         task.description = taskDto.description;
+        task.status = TaskStatus.ACTIVE;
 
         return this.tasksRepository.save(task);
     }
