@@ -9,8 +9,8 @@ export class TasksController {
     }
 
     @Get()
-    async getAll() : Promise<Task[]> {
-        return this.tasksService.findAll();
+    async getAll(@Query('status') status?: number) : Promise<Task[]> {
+        return status ? this.tasksService.findByStatus(status) : this.tasksService.findAll();
     }
 
     @Get(':id')
@@ -32,10 +32,5 @@ export class TasksController {
     @Patch(':id')
     edit(@Param('id') id: number, @Body() taskDto: CreateTaskDto) {
         return this.tasksService.edit(id, taskDto);
-    }
-
-    @Get('active')
-    getByStatus(@Query('status') status: number) : Promise<Task[]> {
-        return this.tasksService.findByStatus(status);
     }
 }
