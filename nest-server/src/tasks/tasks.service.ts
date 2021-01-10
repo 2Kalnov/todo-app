@@ -14,7 +14,7 @@ export class TasksService {
     }
 
     findAll(offset: number = 0, limit: number = 20) : Promise<Task[]> {
-        return this.tasksRepository.find({ skip: offset, take: limit});
+        return this.tasksRepository.find({ skip: offset, take: limit, order: { updatedAt: "DESC" }});
     }
 
     async edit(id: number, editInfo: CreateTaskDto)  {
