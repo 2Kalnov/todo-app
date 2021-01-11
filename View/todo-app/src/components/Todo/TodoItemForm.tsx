@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 type TodoItemFormProps = {
-
+  onAdd: () => void
 }
 
 export const TodoItemForm: React.FC<TodoItemFormProps> = (props) => {
@@ -48,6 +48,8 @@ export const TodoItemForm: React.FC<TodoItemFormProps> = (props) => {
     })
     setTitle('')
     setDescription('')
+
+    props.onAdd()
   }
 
   return (
