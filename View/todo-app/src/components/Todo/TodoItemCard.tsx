@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
 }))
 
 type TodoItemCardProps = {
-  className: string
+  className?: string
 }
 
 
