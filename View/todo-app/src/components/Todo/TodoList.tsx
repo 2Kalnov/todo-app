@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getAllTasks} from "../../api";
+import {getAllTasks} from "../../tasks";
 import {Task} from "../../types/Task";
 import {TodoItem} from "./TodoItem";
 
