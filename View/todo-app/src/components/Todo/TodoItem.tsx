@@ -1,6 +1,7 @@
 import React from 'react'
 import {makeStyles} from '@material-ui/styles';
 import {TaskStatus} from "../../types/TaskStatus";
+import {TodoItemCard} from "./TodoItemCard";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -47,9 +48,9 @@ export const TodoItem: React.FC<TodoItemProps> = (props) => {
     containerClasses.push(styles.done)
 
   return (
-    <div className={containerClasses.join(' ')}>
+    <TodoItemCard className={containerClasses.join(' ')}>
       <span className={styles.title}>{props.title}</span>
       { props.description && <span className={styles.description}>{props.description}</span> }
-    </div>
+    </TodoItemCard>
   )
 }
