@@ -26,7 +26,6 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
 
   return (
     <div className={styles.list}>
-      <h1>Заметки</h1>
       {
         tasks.map((task: Task) => {
           return <TodoItem title={task.title} description={task.description} status={task.status} />
