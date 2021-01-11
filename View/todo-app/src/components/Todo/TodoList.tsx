@@ -14,7 +14,7 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
     getAllTasks().then(response => {
       response.json().then(tasks => setTasks(tasks))
     })
-  })
+  }, [])
 
   return (
     <div>
