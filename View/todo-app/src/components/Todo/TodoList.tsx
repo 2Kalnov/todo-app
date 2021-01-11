@@ -2,13 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {getAllTasks} from "../../api/tasks";
 import {Task} from "../../types/Task";
 import {TodoItem} from "./TodoItem";
+import {makeStyles} from "@material-ui/core";
 
 type TodoListProps = {
 
 }
 
+const useStyles = makeStyles(() => ({
+  list: {
+    padding: "14px 24px"
+  }
+}))
+
 export const TodoList: React.FC<TodoListProps> = (props) => {
   const [tasks, setTasks] = useState([])
+  const styles = useStyles()
 
   useEffect(() => {
     getAllTasks().then(response => {
@@ -17,7 +25,8 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
   }, [])
 
   return (
-    <div>
+    <div className={styles.list}>
+      <h1>Заметки</h1>
       {
         tasks.map((task: Task) => {
           return <TodoItem title={task.title} description={task.description} status={task.status} />
