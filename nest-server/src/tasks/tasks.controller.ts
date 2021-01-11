@@ -13,6 +13,11 @@ export class TasksController {
         return status ? this.tasksService.findByStatus(status) : this.tasksService.findAll();
     }
 
+    @Get('/byStatus')
+    getByStatus() {
+        return this.tasksService.findAllAndGroupByStatus();
+    }
+
     @Get(':id')
     async get(@Param('id') id: number) : Promise<Task> {
         return this.tasksService.findById(id);
