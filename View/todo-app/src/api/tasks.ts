@@ -10,3 +10,7 @@ export const getAllTasks = () => {
 export const addTask = (taskDto: CreateTaskDto) => {
   return api.post(`${BASE_URL}/`, taskDto)
 }
+
+export const completeTask = (taskId: number) => {
+  return api.patch(`${BASE_URL}/${taskId}/done`)
+}
