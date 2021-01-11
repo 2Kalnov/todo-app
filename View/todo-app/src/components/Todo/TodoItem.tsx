@@ -24,7 +24,7 @@ const useStyles = makeStyles(() => ({
     display: 'block',
   },
   description: {
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     display: 'block',
     marginTop: '14px',
     color: 'rgba(255, 255, 255, 0.95)',
