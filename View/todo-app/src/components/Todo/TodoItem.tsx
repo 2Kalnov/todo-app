@@ -4,14 +4,6 @@ import {TaskStatus} from "../../types/TaskStatus";
 import {TodoItemCard} from "./TodoItemCard";
 
 const useStyles = makeStyles(() => ({
-  container: {
-    borderRadius: '8px',
-    padding: '10px 20px',
-    '&:not(:first-of-type)': {
-      marginTop: '14px'
-    },
-    maxWidth: '40%'
-  },
   active: {
     backgroundColor: 'rgb(76, 194, 70)',
   },
@@ -41,14 +33,8 @@ type TodoItemProps = {
 export const TodoItem: React.FC<TodoItemProps> = (props) => {
   const styles = useStyles()
 
-  const containerClasses = [styles.container]
-  if(props.status === TaskStatus.ACTIVE)
-    containerClasses.push(styles.active)
-  else if(props.status === TaskStatus.DONE)
-    containerClasses.push(styles.done)
-
   return (
-    <TodoItemCard className={containerClasses.join(' ')}>
+    <TodoItemCard className={props.status === TaskStatus.ACTIVE ? styles.active : styles.done}>
       <span className={styles.title}>{props.title}</span>
       { props.description && <span className={styles.description}>{props.description}</span> }
     </TodoItemCard>
