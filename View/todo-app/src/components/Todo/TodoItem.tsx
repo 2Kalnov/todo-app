@@ -58,7 +58,7 @@ export const TodoItem: React.FC<TodoItemProps> = (props) => {
         <span className={styles.title}>{props.title}</span>
         { props.description && <span className={styles.description}>{props.description}</span> }
       </div>
-      <Checkbox onClick={handleTaskCompletion}/>
+      {props.status === TaskStatus.ACTIVE && <Checkbox onClick={handleTaskCompletion}/>}
     </TodoItemCard>
   )
 }
