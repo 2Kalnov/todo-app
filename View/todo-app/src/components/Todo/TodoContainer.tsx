@@ -31,7 +31,7 @@ export const TodoContainer: React.FC<TodoContainerProps> = (props) => {
     <div className={styles.container}>
       <h1>Заметки</h1>
       <TodoItemForm onAdd={updateTasks}/>
-      <TodoList tasks={tasks}/>
+      <TodoList tasks={tasks} onTaskComplete={updateTasks}/>
     </div>
   )
 }
