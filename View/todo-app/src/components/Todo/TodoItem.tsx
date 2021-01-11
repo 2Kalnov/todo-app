@@ -2,8 +2,13 @@ import React from 'react'
 import {makeStyles} from '@material-ui/styles';
 import {TaskStatus} from "../../types/TaskStatus";
 import {TodoItemCard} from "./TodoItemCard";
+import {Checkbox} from "@material-ui/core";
+import {completeTask} from "../../api/tasks";
 
 const useStyles = makeStyles(() => ({
+  card: {
+    display: 'flex'
+  },
   active: {
     backgroundColor: 'rgb(76, 194, 70)',
   },
@@ -25,18 +30,34 @@ const useStyles = makeStyles(() => ({
 }));
 
 type TodoItemProps = {
+  id: number
   title: string
   description?: string
   status: TaskStatus
+  onComplete: () => void
 }
 
 export const TodoItem: React.FC<TodoItemProps> = (props) => {
   const styles = useStyles()
 
+  const handleTaskCompletion = async () => {
+    await completeTask(props.id)
+    props.onComplete()
+  }
+
+  const containerClasses = [styles.card]
+  if(props.status === TaskStatus.ACTIVE)
+    containerClasses.push(styles.active)
+  else if(props.status === TaskStatus.DONE)
+    containerClasses.push(styles.done)
+
   return (
-    <TodoItemCard className={props.status === TaskStatus.ACTIVE ? styles.active : styles.done}>
-      <span className={styles.title}>{props.title}</span>
-      { props.description && <span className={styles.description}>{props.description}</span> }
+    <TodoItemCard className={containerClasses.join(' ')}>
+      <div>
+        <span className={styles.title}>{props.title}</span>
+        { props.description && <span className={styles.description}>{props.description}</span> }
+      </div>
+      <Checkbox onClick={handleTaskCompletion}/>
     </TodoItemCard>
   )
 }
