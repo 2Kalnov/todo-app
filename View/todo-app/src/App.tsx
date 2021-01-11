@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import {TodoList} from "./components/Todo/TodoList";
 
 type AppProps = {
 
@@ -7,7 +8,7 @@ type AppProps = {
 
 export const App: React.FC<AppProps> = (props: AppProps) => {
   return (
-    <h2>Заметки</h2>
+      <TodoList/>
   )
 }
 
