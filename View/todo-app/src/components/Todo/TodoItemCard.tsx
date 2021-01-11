@@ -12,8 +12,18 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-export const TodoItemCard: React.FC<{}> = (props) => {
+type TodoItemCardProps = {
+  className: string
+}
+
+
+export const TodoItemCard: React.FC<TodoItemCardProps> = (props) => {
   const styles = useStyles()
 
-  return <div className={styles.container}>{props.children}</div>
+  const { className, ...otherProps } = props
+  const classes = [styles.container]
+  if(className)
+    classes.push(className)
+
+  return <div className={classes.join(' ')} >{props.children}</div>
 }
