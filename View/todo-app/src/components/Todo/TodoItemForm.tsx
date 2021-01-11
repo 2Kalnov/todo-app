@@ -41,8 +41,8 @@ export const TodoItemForm: React.FC<TodoItemFormProps> = (props) => {
     setDescription(event.target.value)
   };
 
-  const handleAddButtonClick = () => {
-    addTask({
+  const handleAddButtonClick = async () => {
+    await addTask({
       title,
       description
     })
