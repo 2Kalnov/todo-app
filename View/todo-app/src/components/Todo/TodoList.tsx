@@ -8,15 +8,8 @@ type TodoListProps = {
 
 }
 
-const useStyles = makeStyles(() => ({
-  list: {
-    padding: "14px 24px"
-  }
-}))
-
 export const TodoList: React.FC<TodoListProps> = (props) => {
   const [tasks, setTasks] = useState([])
-  const styles = useStyles()
 
   useEffect(() => {
     getAllTasks().then(response => {
@@ -25,7 +18,7 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
   }, [])
 
   return (
-    <div className={styles.list}>
+    <div>
       {
         tasks.map((task: Task) => {
           return <TodoItem title={task.title} description={task.description} status={task.status} />
