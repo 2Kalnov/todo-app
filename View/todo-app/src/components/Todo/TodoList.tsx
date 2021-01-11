@@ -13,7 +13,7 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
     <div>
       {
         props.tasks.map((task: Task) => {
-          return <TodoItem title={task.title} description={task.description} status={task.status} />
+          return <TodoItem key={`${task.title}${task.createdAt}`} title={task.title} description={task.description} status={task.status} />
         })
       }
     </div>
