@@ -6,6 +6,7 @@ import {makeStyles} from "@material-ui/core";
 
 type TodoListProps = {
   tasks: Task[]
+  onTaskComplete: () => void
 }
 
 export const TodoList: React.FC<TodoListProps> = (props) => {
@@ -13,7 +14,16 @@ export const TodoList: React.FC<TodoListProps> = (props) => {
     <div>
       {
         props.tasks.map((task: Task) => {
-          return <TodoItem key={`${task.title}${task.createdAt}`} title={task.title} description={task.description} status={task.status} />
+          return (
+            <TodoItem
+              key={`${task.title}${task.createdAt}`}
+              title={task.title}
+              description={task.description}
+              status={task.status}
+              id={task.id}
+              onComplete={props.onTaskComplete}
+            />
+          )
         })
       }
     </div>
