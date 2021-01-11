@@ -28,6 +28,17 @@ export class TasksService {
         });
     }
 
+    findAllAndGroupByStatus(offset: number = 0, limit: number = 20): Promise<Task[]> {
+        return this.tasksRepository
+          .createQueryBuilder()
+          .skip(offset)
+          .take(limit)
+          .orderBy('status')
+          .addOrderBy('"updatedAt"', "DESC")
+          .getMany();
+    }
+
+
     async edit(id: number, editInfo: CreateTaskDto)  {
         const task = await this.tasksRepository.findOne(id);
         if(task) {
