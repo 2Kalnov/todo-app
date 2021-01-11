@@ -4,8 +4,12 @@ import {TaskStatus} from "../../types/TaskStatus";
 
 const useStyles = makeStyles(() => ({
   container: {
-    borderRadius: '10px',
+    borderRadius: '8px',
     padding: '10px 20px',
+    '&:not(:first-of-type)': {
+      marginTop: '14px'
+    },
+    maxWidth: '40%'
   },
   active: {
     backgroundColor: 'rgb(76, 194, 70)',
