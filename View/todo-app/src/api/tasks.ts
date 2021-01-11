@@ -1,16 +1,12 @@
 import {CreateTaskDto} from "../types/CreateTaskDto";
+import { api } from "./axios";
 
-const BASE_URL = 'http://localhost:8080/tasks';
+const BASE_URL = '/tasks';
 
 export const getAllTasks = () => {
-  return fetch(`${BASE_URL}/byStatus`, {
-    method: 'GET'
-  })
+  return api.get(`${BASE_URL}/byStatus`)
 }
 
 export const addTask = (taskDto: CreateTaskDto) => {
-  return fetch(`${BASE_URL}`, {
-    method: 'POST',
-    body: JSON.stringify(taskDto)
-  })
+  return api.post(`${BASE_URL}/`, taskDto)
 }
