@@ -15,11 +15,15 @@ const useStyles = makeStyles(() => ({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: '1.2rem',
-    color: 'rgba(255, 255, 255, 0.8)'
+    fontSize: '1.6rem',
+    color: 'rgba(255, 255, 255, 0.95)',
+    display: 'block',
   },
   description: {
-    fontSize: '0.9rem'
+    fontSize: '1.1rem',
+    display: 'block',
+    marginTop: '14px',
+    color: 'rgba(255, 255, 255, 0.95)',
   }
 }));
 
