@@ -6,7 +6,10 @@ import {getAllTasks} from "../../api/tasks";
 
 const useStyles = makeStyles(() => ({
   container: {
-    padding: '10px 30px'
+    padding: '10px 30px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
   }
 }))
 
