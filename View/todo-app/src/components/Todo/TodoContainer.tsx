@@ -3,6 +3,7 @@ import {TodoList} from "./TodoList";
 import {TodoItemForm} from "./TodoItemForm";
 import {makeStyles} from "@material-ui/core";
 import {getAllTasks} from "../../api/tasks";
+import {Task} from "../../types/Task";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -20,7 +21,7 @@ type TodoContainerProps = {
 export const TodoContainer: React.FC<TodoContainerProps> = (props) => {
   const styles = useStyles()
 
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState<Task[]>([])
 
   const updateTasks = () => {
     getAllTasks().then(response => {
