@@ -3,7 +3,8 @@ import {makeStyles} from '@material-ui/styles';
 import {TaskStatus} from "../../types/TaskStatus";
 import {TodoItemCard} from "./TodoItemCard";
 import {Checkbox} from "@material-ui/core";
-import {completeTask} from "../../api/tasks";
+import {completeTask, removeTask} from "../../api/tasks";
+import { Delete } from '@material-ui/icons'
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -28,6 +29,15 @@ const useStyles = makeStyles(() => ({
     display: 'block',
     marginTop: '14px',
     color: 'rgba(255, 255, 255, 0.95)',
+  },
+  checkboxSecondary: {
+    color: 'rgba(255, 255, 255, 0.4)'
+  },
+  checkedCheckbox: {
+    color: '#949e85'
+  },
+  deleteButton: {
+    cursor: 'pointer'
   }
 }));
 
@@ -37,6 +47,7 @@ type TodoItemProps = {
   description?: string
   status: TaskStatus
   onComplete: () => void
+  onDelete: () => void
 }
 
 export const TodoItem: React.FC<TodoItemProps> = (props) => {
@@ -45,6 +56,11 @@ export const TodoItem: React.FC<TodoItemProps> = (props) => {
   const handleTaskCompletion = async () => {
     await completeTask(props.id)
     props.onComplete()
+  }
+
+  const handleTaskDeletion = async () => {
+    await removeTask(props.id)
+    props.onDelete()
   }
 
   const containerClasses = [styles.card]
@@ -59,7 +75,8 @@ export const TodoItem: React.FC<TodoItemProps> = (props) => {
         <span className={styles.title}>{props.title}</span>
         { props.description && <span className={styles.description}>{props.description}</span> }
       </div>
-      {props.status === TaskStatus.ACTIVE && <Checkbox onClick={handleTaskCompletion}/>}
+      {props.status === TaskStatus.ACTIVE && <Checkbox onClick={handleTaskCompletion} color='default'/>}
+      <Delete htmlColor='#d63e3e' className={styles.deleteButton}/>
     </TodoItemCard>
   )
 }
