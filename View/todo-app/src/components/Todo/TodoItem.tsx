@@ -76,7 +76,7 @@ export const TodoItem: React.FC<TodoItemProps> = (props) => {
         { props.description && <span className={styles.description}>{props.description}</span> }
       </div>
       {props.status === TaskStatus.ACTIVE && <Checkbox onClick={handleTaskCompletion} color='default'/>}
-      <Delete htmlColor='#d63e3e' className={styles.deleteButton}/>
+      <Delete htmlColor='#d63e3e' className={styles.deleteButton} onClick={handleTaskDeletion}/>
     </TodoItemCard>
   )
 }
