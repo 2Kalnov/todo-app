@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     '&:not(:first-of-type)': {
       marginTop: '14px'
     },
-    maxWidth: '40%'
+    width: '60%'
   },
 }))
 
