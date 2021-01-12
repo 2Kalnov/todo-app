@@ -8,7 +8,8 @@ import {completeTask} from "../../api/tasks";
 const useStyles = makeStyles(() => ({
   card: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   active: {
     backgroundColor: 'rgb(76, 194, 70)',
